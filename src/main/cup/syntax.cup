@@ -1,0 +1,39 @@
+package Analizadores;
+import java_cup.runtime.*;
+import Tabla.*;
+
+//Codigo que se le agrega al parser
+parser code     
+{:
+    public void syntax_error(Symbol cur_token) {
+        String errMsg = "Syntax error " + cur_token.value.toString() + " " + cur_token.right + ":" + cur_token.left + "\n";
+        report_error(errMsg, null);
+    }
+
+    public void unrecovered_syntax_error(Symbol cur_token) throws Exception {
+        String errMsg = "Couldn't repair and continue parse " + cur_token.value.toString() + " " + cur_token.right + ":" + cur_token.left + "\n";
+        report_fatal_error(errMsg, null);
+    }
+:}
+
+//Declaracion de terminales
+terminal String COD_POSTAL, WORD, NUMBER;
+
+//Declaracion de no terminales
+non terminal Symbol inicio, prog, sent;
+
+start with inicio;
+
+//Reglas gramaticales
+inicio          ::= prog
+                    {:  tablaDeSimbolos.guardarTabla();
+                         System.out.println("COMPILACION EXITOSA!");
+                    :};  
+prog           ::= sent
+                    {: 
+                         System.out.println("prog -> sent");
+                    :}
+               | prog sent
+                    {: 
+                         System.out.println("prog -> prog sent");
+                    :};
