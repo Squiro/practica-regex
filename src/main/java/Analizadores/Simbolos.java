@@ -8,17 +8,43 @@ package Analizadores;
 /** CUP generated class containing symbol constants. */
 public class Simbolos {
   /* terminals */
-  public static final int COD_POSTAL = 2;
-  public static final int NUMBER = 5;
-  public static final int PATENTE_MERCOSUR = 3;
-  public static final int EOF = 0;
-  public static final int STRING = 6;
-  public static final int CONSTANTES_C = 9;
-  public static final int CONSTANTE_ENTERA = 10;
-  public static final int error = 1;
-  public static final int COMMENT = 7;
-  public static final int IDENTIFICADOR = 8;
+  public static final int OP_NE = 31;
+  public static final int ENDDEC = 16;
   public static final int WORD = 4;
+  public static final int COD_POSTAL = 2;
+  public static final int COMMENT = 7;
+  public static final int PATENTE_MERCOSUR = 3;
+  public static final int OP_GT = 20;
+  public static final int INTEGER = 17;
+  public static final int CONSTANTES_C = 9;
+  public static final int OP_NOT = 32;
+  public static final int OP_AND = 33;
+  public static final int OP_MULTI = 26;
+  public static final int WRITE = 19;
+  public static final int OP_INCREMENT = 29;
+  public static final int IDENTIFICADOR = 8;
+  public static final int CONSTANTE_ENTERA = 10;
+  public static final int IF = 13;
+  public static final int OP_DECREMENT = 30;
+  public static final int EOF = 0;
+  public static final int OP_DIVISION = 27;
+  public static final int OP_GTE = 22;
+  public static final int error = 1;
+  public static final int OP_LT = 21;
+  public static final int OP_OR = 34;
+  public static final int NUMBER = 5;
+  public static final int OP_MINUS = 25;
+  public static final int DECVAR = 15;
+  public static final int WHILE = 14;
+  public static final int FLOAT = 18;
+  public static final int OP_MODULE = 28;
+  public static final int OP_EQ = 36;
+  public static final int STRING = 12;
+  public static final int TEXT = 6;
+  public static final int OP_PLUS = 24;
+  public static final int OP_LTE = 23;
+  public static final int CONSTANTE_FLOAT = 11;
+  public static final int OP_ASIG = 35;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
@@ -26,11 +52,37 @@ public class Simbolos {
   "PATENTE_MERCOSUR",
   "WORD",
   "NUMBER",
-  "STRING",
+  "TEXT",
   "COMMENT",
   "IDENTIFICADOR",
   "CONSTANTES_C",
-  "CONSTANTE_ENTERA"
+  "CONSTANTE_ENTERA",
+  "CONSTANTE_FLOAT",
+  "STRING",
+  "IF",
+  "WHILE",
+  "DECVAR",
+  "ENDDEC",
+  "INTEGER",
+  "FLOAT",
+  "WRITE",
+  "OP_GT",
+  "OP_LT",
+  "OP_GTE",
+  "OP_LTE",
+  "OP_PLUS",
+  "OP_MINUS",
+  "OP_MULTI",
+  "OP_DIVISION",
+  "OP_MODULE",
+  "OP_INCREMENT",
+  "OP_DECREMENT",
+  "OP_NE",
+  "OP_NOT",
+  "OP_AND",
+  "OP_OR",
+  "OP_ASIG",
+  "OP_EQ"
   };
 }
 

@@ -15,6 +15,7 @@ import java_cup.runtime.*;
 
 %{
     int RANGO_ENTERO = 65536;
+    double RANGO_FLOAT = 4294967296L;
     private Symbol symbol(int type) {
           System.out.println("[LEX] TOKEN < " + Simbolos.terminalNames[type] + " > : " + yytext());
           return new Symbol(type, yyline, yycolumn, yytext());
@@ -35,7 +36,7 @@ DIGITO_HEXA     = [a-fA-F0-9]
 WORD = {LETRA}+
 NUMBER = {DIGITO}+
 ALPHA_NUMERIC = [a-zA-Z0-9_*/]+
-STRING = {ALPHA_NUMERIC} | {ALPHA_NUMERIC}(\ {ALPHA_NUMERIC})+
+TEXT = {ALPHA_NUMERIC} | {ALPHA_NUMERIC}(\ {ALPHA_NUMERIC})+
 
 /* Puntos de la prática */
 
@@ -53,9 +54,68 @@ IDENTIFICADOR = {LETRA} ( ([a-zA-Z0-9]_)+ | [a-zA-Z0-9]*) ({LETRA}|{DIGITO})+ ( 
 CONSTANTES_C = "0x"{DIGITO_HEXA}+ | "0b"{DIGITO_BINARIO}+
 // Punto 7: Constantes aritméticas enteras. Controlar el rango permitido.
 CONSTANTE_ENTERA =  {DIGITO}+
+// Punto 8: Constantes reales con formato xx.xx, controlando el rango permitido.
+CONSTANTE_FLOAT =  {DIGITO}+"."{DIGITO}+
+// Punto 9: strings del formato "hola"
+STRING =  \".*\"
+// Punto 10: Palabras reservadas (IF-WHILE-DECVAR-ENDDEC-INTEGER-FLOAT-WRITE)
+IF = "IF"
+WHILE = "WHILE"
+DECVAR = "DECVAR"
+ENDDEC = "ENDDEC",
+INTEGER = "INTEGER"
+FLOAT = "FLOAT"
+WRITE = "WRITE"
+
+// Punto 11: Operadores lógicos y ariméticos
+OP_GT = ">" 
+OP_LT = "<" 
+OP_GTE = ">=" 
+OP_LTE = "<=" 
+OP_NE = "!="
+OP_PLUS = "+" 
+OP_MINUS = "-" 
+OP_MULTI = "*" 
+OP_DIVISION = "/"
+OP_MODULE = "%" 
+OP_INCREMENT = "++" 
+OP_DECREMENT = "--"
+OP_NOT = "!" 
+OP_AND = "&&"
+OP_OR = "||" 
+OP_ASIG = "="
+OP_EQ = "=="
 
 %%
 <YYINITIAL> {
+
+// Keywords
+{IF}	                       { return symbol(Simbolos.IF); }
+{WHILE}	                 { return symbol(Simbolos.WHILE); }
+{DECVAR}	                 { return symbol(Simbolos.DECVAR); }
+{ENDDEC}	                 { return symbol(Simbolos.ENDDEC); }
+{INTEGER}	                 { return symbol(Simbolos.INTEGER); }
+{FLOAT}	                 { return symbol(Simbolos.FLOAT); }
+{WRITE}	                 { return symbol(Simbolos.WRITE); }
+
+{OP_GT}                      { return symbol(Simbolos.OP_GT); }
+{OP_LT}                      { return symbol(Simbolos.OP_LT); }
+{OP_GTE}                     { return symbol(Simbolos.OP_GTE); }
+{OP_LTE}                     { return symbol(Simbolos.OP_LTE); }
+{OP_NE}                      { return symbol(Simbolos.OP_NE); }
+{OP_PLUS}                    { return symbol(Simbolos.OP_PLUS); }
+{OP_MINUS}                   { return symbol(Simbolos.OP_MINUS); }
+{OP_MULTI}                   { return symbol(Simbolos.OP_MULTI); }
+{OP_DIVISION}                { return symbol(Simbolos.OP_DIVISION); }
+{OP_MODULE}                  { return symbol(Simbolos.OP_MODULE); }
+{OP_INCREMENT}               { return symbol(Simbolos.OP_INCREMENT); }
+{OP_DECREMENT}               { return symbol(Simbolos.OP_DECREMENT); }
+{OP_NOT}                     { return symbol(Simbolos.OP_NOT); }
+{OP_AND}                     { return symbol(Simbolos.OP_AND); }
+{OP_OR}                      { return symbol(Simbolos.OP_OR); }
+{OP_ASIG}                    { return symbol(Simbolos.OP_ASIG); }
+{OP_EQ}                      { return symbol(Simbolos.OP_EQ); }
+
 {COD_POSTAL}	           { return symbol(Simbolos.COD_POSTAL); }
 {PATENTE_MERCOSUR}	     { return symbol(Simbolos.PATENTE_MERCOSUR); }
 {COMMENT}	                 { return symbol(Simbolos.COMMENT); }
@@ -73,9 +133,17 @@ CONSTANTE_ENTERA =  {DIGITO}+
                                           return symbol(Simbolos.NUMBER);
                                           //throw new Error("La constante [" + yytext() + "] esta fuera del limite de los enteros."); 
                              }
+{CONSTANTE_FLOAT}             {
+                                    Double constFloat = Double.parseDouble(yytext());
+                                    if (constFloat >= -RANGO_FLOAT && constFloat <= RANGO_FLOAT)
+                                          return symbol(Simbolos.CONSTANTE_FLOAT);
+                                    else
+                                          throw new Error("La constante [" + yytext() + "] esta fuera del limite de los flotantes");
+                              }
+{STRING}                       { return symbol(Simbolos.STRING); }                              
 {WORD}                       { return symbol(Simbolos.WORD); }
 // {NUMBER}                     { return symbol(Simbolos.NUMBER); }
-{STRING}                     { return symbol(Simbolos.STRING); }
+{TEXT}                       { return symbol(Simbolos.TEXT); }
 {WhiteSpace}                 { /* do nothing */ }
 
 }

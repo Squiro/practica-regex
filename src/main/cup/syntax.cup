@@ -17,7 +17,14 @@ parser code
 :}
 
 //Declaracion de terminales
-terminal String COD_POSTAL, PATENTE_MERCOSUR, WORD, NUMBER, STRING, COMMENT, IDENTIFICADOR, CONSTANTES_C, CONSTANTE_ENTERA;
+terminal String COD_POSTAL, PATENTE_MERCOSUR, WORD, NUMBER, TEXT, COMMENT, IDENTIFICADOR, CONSTANTES_C, CONSTANTE_ENTERA, CONSTANTE_FLOAT, STRING;
+
+//Declaracion de terminales de palabras reservadas (por prolijidad puesto aparte)
+terminal String IF, WHILE, DECVAR, ENDDEC, INTEGER, FLOAT, WRITE;
+//Declaracion de terminales de operadores lógicos
+// Faltan algunos, como los operaciones de asignación al estilo de var += 123;
+terminal String OP_GT, OP_LT, OP_GTE, OP_LTE, OP_PLUS, OP_MINUS, OP_MULTI, OP_DIVISION, OP_MODULE, OP_INCREMENT, OP_DECREMENT,
+                OP_NE, OP_NOT, OP_AND, OP_OR, OP_ASIG, OP_EQ;
 
 //Declaracion de no terminales
 non terminal Symbol inicio, prog, sent;
