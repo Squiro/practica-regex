@@ -34,7 +34,7 @@ DIGITO_BINARIO  = [0-1]
 DIGITO_HEXA     = [a-fA-F0-9]
 WORD = {LETRA}+
 NUMBER = {DIGITO}+
-ALPHA_NUMERIC = 	[a-zA-Z0-9_*/]+
+ALPHA_NUMERIC = [a-zA-Z0-9_*/]+
 STRING = {ALPHA_NUMERIC} | {ALPHA_NUMERIC}(\ {ALPHA_NUMERIC})+
 
 /* Puntos de la prática */
@@ -48,7 +48,11 @@ COMMENT = "/*" ~"*/"
 // Punto 4: Identificadores (nombres de variables) de cualquier longitud, del tipo _var1
 // IDENTIFICADOR = {LETRA}[a-zA-Z0-9_]*({LETRA}|{DIGITO})+
 // Punto 5: Idem anterior pero que no tengan dos guiones seguidos
-IDENTIFICADOR = {LETRA}[a-zA-Z0-9_]*({LETRA}|{DIGITO})+
+IDENTIFICADOR = {LETRA} ( ([a-zA-Z0-9]_)+ | [a-zA-Z0-9]*) ({LETRA}|{DIGITO})+ ( ([a-zA-Z0-9]_)+ | [a-zA-Z0-9]*) ({LETRA}|{DIGITO})+
+// Punto 6: Constantes en otras bases como las del lenguaje C
+CONSTANTES_C = "0x"{DIGITO_HEXA}+ | "0b"{DIGITO_BINARIO}+
+// Punto 7: Constantes aritméticas enteras. Controlar el rango permitido.
+CONSTANTE_ENTERA =  {DIGITO}+
 
 %%
 <YYINITIAL> {
@@ -56,8 +60,21 @@ IDENTIFICADOR = {LETRA}[a-zA-Z0-9_]*({LETRA}|{DIGITO})+
 {PATENTE_MERCOSUR}	     { return symbol(Simbolos.PATENTE_MERCOSUR); }
 {COMMENT}	                 { return symbol(Simbolos.COMMENT); }
 {IDENTIFICADOR}	           { return symbol(Simbolos.IDENTIFICADOR); }
+{CONSTANTES_C}	           { return symbol(Simbolos.CONSTANTES_C); }
+{CONSTANTE_ENTERA}	     {                             
+                                    // 2147483647 is the maximum value parseInt() can parse without giving an exception. 
+                                    // Here we defined some custom int max value.
+                                    Integer constInt = Integer.parseInt(yytext());
+
+                                    if(constInt >= -RANGO_ENTERO && constInt <= RANGO_ENTERO ){
+                                          return symbol(Simbolos.CONSTANTE_ENTERA);
+                                    }                                          
+                                    else
+                                          return symbol(Simbolos.NUMBER);
+                                          //throw new Error("La constante [" + yytext() + "] esta fuera del limite de los enteros."); 
+                             }
 {WORD}                       { return symbol(Simbolos.WORD); }
-{NUMBER}                     { return symbol(Simbolos.NUMBER); }
+// {NUMBER}                     { return symbol(Simbolos.NUMBER); }
 {STRING}                     { return symbol(Simbolos.STRING); }
 {WhiteSpace}                 { /* do nothing */ }
 

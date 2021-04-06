@@ -65,8 +65,9 @@ public class AnalizadorLexico implements java_cup.runtime.Scanner {
 
   private static final String ZZ_CMAP_BLOCKS_PACKED_0 =
     "\11\0\1\1\1\2\1\0\1\1\1\3\22\0\1\4"+
-    "\11\0\1\5\4\0\1\6\1\7\11\10\7\0\32\11"+
-    "\4\0\1\12\1\0\32\13\u0185\0";
+    "\11\0\1\5\4\0\1\6\1\7\1\10\10\11\7\0"+
+    "\1\12\1\13\4\12\21\14\1\15\2\14\4\0\1\16"+
+    "\1\0\1\17\1\20\4\17\21\21\1\22\2\21\u0185\0";
 
   private static int [] zzUnpackcmap_blocks() {
     int [] result = new int[512];
@@ -94,12 +95,13 @@ public class AnalizadorLexico implements java_cup.runtime.Scanner {
 
   private static final String ZZ_ACTION_PACKED_0 =
     "\1\0\1\1\2\2\2\3\2\4\2\5\1\0\1\3"+
-    "\1\4\2\6\1\3\2\0\1\3\1\4\1\0\1\6"+
-    "\1\0\1\7\1\10\1\3\1\6\1\7\1\3\1\6"+
-    "\1\3\1\6\1\0\1\11\1\3\1\11";
+    "\1\4\2\3\1\4\1\3\2\5\2\0\1\3\2\6"+
+    "\1\4\1\7\1\3\1\0\1\7\1\0\1\10\1\11"+
+    "\2\3\1\7\1\10\1\7\1\3\2\7\1\3\1\7"+
+    "\1\0\1\12\1\3\1\12";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[36];
+    int [] result = new int[46];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -124,14 +126,15 @@ public class AnalizadorLexico implements java_cup.runtime.Scanner {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\14\0\14\0\30\0\44\0\60\0\74\0\110"+
-    "\0\124\0\140\0\154\0\170\0\204\0\140\0\220\0\140"+
-    "\0\234\0\250\0\264\0\300\0\314\0\330\0\344\0\44"+
-    "\0\74\0\360\0\374\0\14\0\u0108\0\u0114\0\u0120\0\u012c"+
-    "\0\u0138\0\140\0\u0144\0\44";
+    "\0\0\0\23\0\23\0\46\0\71\0\114\0\137\0\162"+
+    "\0\205\0\230\0\253\0\276\0\321\0\344\0\367\0\u010a"+
+    "\0\u011d\0\u0130\0\u011d\0\u0143\0\u0156\0\u0169\0\344\0\367"+
+    "\0\u017c\0\u018f\0\u01a2\0\u01b5\0\u01c8\0\u01db\0\71\0\321"+
+    "\0\u01ee\0\u0201\0\u0214\0\23\0\u0227\0\u023a\0\u024d\0\u0260"+
+    "\0\u0273\0\u0286\0\u0299\0\u018f\0\u02ac\0\71";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[36];
+    int [] result = new int[46];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -154,26 +157,34 @@ public class AnalizadorLexico implements java_cup.runtime.Scanner {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\2\2\3\1\4\1\3\1\5\1\6\1\7\1\10"+
-    "\1\11\1\5\1\12\16\0\1\3\15\0\1\13\7\5"+
-    "\4\0\1\13\1\14\6\5\4\0\1\13\2\5\2\7"+
-    "\3\5\4\0\1\13\2\5\2\15\3\5\4\0\1\13"+
-    "\2\5\2\16\1\17\1\20\1\16\4\0\1\13\2\5"+
-    "\3\16\1\20\1\16\5\0\7\5\4\21\1\22\1\23"+
-    "\6\14\4\0\1\13\2\5\2\24\3\5\4\0\1\25"+
-    "\2\5\2\26\1\16\1\20\1\16\5\21\1\27\13\21"+
-    "\1\23\6\14\4\21\1\22\1\23\1\30\5\14\4\0"+
-    "\1\13\2\5\2\31\3\5\5\0\2\5\2\32\3\5"+
-    "\4\0\1\13\2\5\2\33\1\16\1\20\1\16\5\21"+
-    "\1\27\1\34\5\21\4\0\1\13\2\5\2\35\3\5"+
-    "\4\0\1\13\2\5\2\36\1\16\1\20\1\16\4\0"+
-    "\1\13\2\5\2\37\3\5\4\0\1\13\2\5\2\16"+
-    "\1\40\1\20\1\16\4\0\1\41\7\5\4\0\1\13"+
-    "\2\5\2\16\1\42\1\20\1\16\5\0\4\5\1\43"+
-    "\2\5\4\0\1\13\4\5\1\44\2\5";
+    "\1\2\2\3\1\4\1\3\1\5\1\6\1\7\2\10"+
+    "\4\11\1\5\4\12\25\0\1\3\24\0\1\13\16\5"+
+    "\4\0\1\13\1\14\15\5\4\0\1\13\2\5\3\15"+
+    "\1\5\1\16\1\5\1\17\2\5\1\16\1\5\1\17"+
+    "\4\0\1\13\2\5\3\20\11\5\4\0\1\13\2\5"+
+    "\3\21\4\22\1\5\4\23\4\0\1\13\2\5\3\21"+
+    "\4\23\1\5\4\23\5\0\16\5\4\24\1\25\1\26"+
+    "\15\14\4\0\1\13\2\5\3\15\11\5\4\0\1\13"+
+    "\2\5\2\27\12\5\4\0\1\13\2\5\5\30\3\5"+
+    "\2\30\2\5\4\0\1\13\2\5\3\31\11\5\4\0"+
+    "\1\13\2\5\7\32\1\33\4\32\4\0\1\34\2\5"+
+    "\3\35\4\32\1\33\4\32\5\24\1\36\22\24\1\26"+
+    "\15\14\4\24\1\25\1\26\1\37\14\14\4\0\1\13"+
+    "\2\5\3\40\11\5\4\0\1\13\2\5\7\32\1\41"+
+    "\4\32\4\0\1\13\2\5\7\21\1\5\4\21\5\0"+
+    "\2\5\3\42\11\5\4\0\1\13\2\5\3\43\4\32"+
+    "\1\41\4\32\5\24\1\36\1\44\14\24\4\0\1\13"+
+    "\2\5\7\45\1\5\4\45\4\0\1\13\2\5\3\46"+
+    "\11\5\4\0\1\13\2\5\3\47\4\32\1\41\4\32"+
+    "\4\0\1\13\2\5\7\50\1\41\4\50\4\0\1\13"+
+    "\2\5\3\51\11\5\4\0\1\13\2\5\3\32\4\52"+
+    "\1\41\4\32\4\0\1\13\2\5\7\50\1\5\4\50"+
+    "\4\0\1\53\16\5\4\0\1\13\2\5\3\32\4\54"+
+    "\1\41\4\32\5\0\5\5\4\55\5\5\4\0\1\13"+
+    "\5\5\4\56\5\5";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[336];
+    int [] result = new int[703];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -216,11 +227,11 @@ public class AnalizadorLexico implements java_cup.runtime.Scanner {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\0\2\11\7\1\1\0\5\1\2\0\2\1\1\0"+
-    "\1\1\1\0\4\1\1\11\4\1\1\0\3\1";
+    "\1\0\2\11\7\1\1\0\10\1\2\0\6\1\1\0"+
+    "\1\1\1\0\5\1\1\11\6\1\1\0\3\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[36];
+    int [] result = new int[46];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -719,47 +730,61 @@ public class AnalizadorLexico implements java_cup.runtime.Scanner {
             throw new Error("Error léxico");
             }
             // fall through
-          case 10: break;
+          case 11: break;
           case 2:
             { /* do nothing */
             }
             // fall through
-          case 11: break;
+          case 12: break;
           case 3:
             { return symbol(Simbolos.STRING);
             }
             // fall through
-          case 12: break;
+          case 13: break;
           case 4:
-            { return symbol(Simbolos.NUMBER);
+            { // 2147483647 is the maximum value parseInt() can parse without giving an exception. 
+                                    // Here we defined some custom int max value.
+                                    Integer constInt = Integer.parseInt(yytext());
+
+                                    if(constInt >= -RANGO_ENTERO && constInt <= RANGO_ENTERO ){
+                                          return symbol(Simbolos.CONSTANTE_ENTERA);
+                                    }                                          
+                                    else
+                                          return symbol(Simbolos.NUMBER);
+                                          //throw new Error("La constante [" + yytext() + "] esta fuera del limite de los enteros.");
             }
             // fall through
-          case 13: break;
+          case 14: break;
           case 5:
             { return symbol(Simbolos.WORD);
             }
             // fall through
-          case 14: break;
-          case 6:
-            { return symbol(Simbolos.IDENTIFICADOR);
-            }
-            // fall through
           case 15: break;
-          case 7:
-            { return symbol(Simbolos.COMMENT);
+          case 6:
+            { return symbol(Simbolos.CONSTANTES_C);
             }
             // fall through
           case 16: break;
-          case 8:
-            { return symbol(Simbolos.COD_POSTAL);
+          case 7:
+            { return symbol(Simbolos.IDENTIFICADOR);
             }
             // fall through
           case 17: break;
-          case 9:
-            { return symbol(Simbolos.PATENTE_MERCOSUR);
+          case 8:
+            { return symbol(Simbolos.COMMENT);
             }
             // fall through
           case 18: break;
+          case 9:
+            { return symbol(Simbolos.COD_POSTAL);
+            }
+            // fall through
+          case 19: break;
+          case 10:
+            { return symbol(Simbolos.PATENTE_MERCOSUR);
+            }
+            // fall through
+          case 20: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }

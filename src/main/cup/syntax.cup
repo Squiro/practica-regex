@@ -17,7 +17,7 @@ parser code
 :}
 
 //Declaracion de terminales
-terminal String COD_POSTAL, PATENTE_MERCOSUR, WORD, NUMBER, STRING, COMMENT, IDENTIFICADOR;
+terminal String COD_POSTAL, PATENTE_MERCOSUR, WORD, NUMBER, STRING, COMMENT, IDENTIFICADOR, CONSTANTES_C, CONSTANTE_ENTERA;
 
 //Declaracion de no terminales
 non terminal Symbol inicio, prog, sent;

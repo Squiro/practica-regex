@@ -16,3 +16,10 @@ linea*/
 v_ariable1
 var_iable2
 noesvariable_
+novariable__2
+0b01010101
+0xFA43AB3F
+0bb0b10b01
+0x0x0xF0F
+0x1234L
+0b0101012

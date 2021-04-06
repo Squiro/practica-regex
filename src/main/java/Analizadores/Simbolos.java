@@ -13,6 +13,8 @@ public class Simbolos {
   public static final int PATENTE_MERCOSUR = 3;
   public static final int EOF = 0;
   public static final int STRING = 6;
+  public static final int CONSTANTES_C = 9;
+  public static final int CONSTANTE_ENTERA = 10;
   public static final int error = 1;
   public static final int COMMENT = 7;
   public static final int IDENTIFICADOR = 8;
@@ -26,7 +28,9 @@ public class Simbolos {
   "NUMBER",
   "STRING",
   "COMMENT",
-  "IDENTIFICADOR"
+  "IDENTIFICADOR",
+  "CONSTANTES_C",
+  "CONSTANTE_ENTERA"
   };
 }
 
