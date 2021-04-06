@@ -10,11 +10,8 @@ public class Main {
     {
         String fileName = "Prueba.txt";
         try {
-        	
-        	
         	AnalizadorLexico lexer = new AnalizadorLexico(new FileReader(fileName));
-        	Symbol token = null;
-        	
+        	Symbol token = null;        	
         	do {
         		token = lexer.next_token();
         	}

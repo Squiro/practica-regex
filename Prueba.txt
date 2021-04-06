@@ -4,3 +4,15 @@ holaasd
 1234
 42434
 1232435345
+AA123BB
+ZS1234OP
+AA 123 BB
+AD 4434 BB 
+/* comentarioooo * * */
+/* comentario multi
+linea*/
+/** * * * */
+/* no es un comentario /
+v_ariable1
+var_iable2
+noesvariable_

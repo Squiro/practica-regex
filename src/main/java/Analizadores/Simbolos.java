@@ -8,17 +8,25 @@ package Analizadores;
 /** CUP generated class containing symbol constants. */
 public class Simbolos {
   /* terminals */
-  public static final int WORD = 3;
-  public static final int error = 1;
-  public static final int NUMBER = 4;
   public static final int COD_POSTAL = 2;
+  public static final int NUMBER = 5;
+  public static final int PATENTE_MERCOSUR = 3;
   public static final int EOF = 0;
+  public static final int STRING = 6;
+  public static final int error = 1;
+  public static final int COMMENT = 7;
+  public static final int IDENTIFICADOR = 8;
+  public static final int WORD = 4;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
   "COD_POSTAL",
+  "PATENTE_MERCOSUR",
   "WORD",
-  "NUMBER"
+  "NUMBER",
+  "STRING",
+  "COMMENT",
+  "IDENTIFICADOR"
   };
 }
 
