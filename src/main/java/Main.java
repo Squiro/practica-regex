@@ -1,4 +1,5 @@
 import Analizadores.AnalizadorLexico;
+import Analizadores.AnalizadorLexicoPunto2;
 import Analizadores.AnalizadorSintactico;
 import java_cup.runtime.Symbol;
 
@@ -8,14 +9,15 @@ import java.io.FileReader;
 public class Main {
     public static void main(String args[])
     {
-        String fileName = "Prueba.txt";
+        String fileName = "PruebaPunto2.txt";
         try {
-        	AnalizadorLexico lexer = new AnalizadorLexico(new FileReader(fileName));
+        	AnalizadorLexicoPunto2 lexer = new AnalizadorLexicoPunto2(new FileReader(fileName));
         	Symbol token = null;        	
         	do {
         		token = lexer.next_token();
         	}
-        	while (token != null);
+        	while (token != null);       	
+        	
         	
             //@SuppressWarnings("deprecation") AnalizadorSintactico sintactico = new AnalizadorSintactico(new AnalizadorLexico(new FileReader(fileName)));
             //sintactico.parse();

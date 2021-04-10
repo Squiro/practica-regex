@@ -1,7 +1,7 @@
 SET JFLEX_JAR=".\lib\jflex\jflex-full-1.8.2.jar"
 SET JCUP_JAR=".\lib\cup\java-cup-11b.jar"
 
-SET LEXER=".\src\main\jflex\lexer.jflex"
+SET LEXER=".\src\main\jflex\lexer-punto2.jflex"
 SET SINTAXIS=".\src\main\cup\syntax.cup"
 
 SET ANALIZADORES_OUT=".\src\main\java\Analizadores"
